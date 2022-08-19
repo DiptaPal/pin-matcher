@@ -58,7 +58,7 @@ document.getElementById('submit-btn').addEventListener('click',function(){
     if(count < 0){
         return;
     }
-    else if((pin.length === 0) || (previousTypeNumber === 0)){
+    else if((pin.length === 0) || (previousTypeNumber.length === 0)){
         return;
     }
     else if(pin === previousTypeNumber){
