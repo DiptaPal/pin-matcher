@@ -46,7 +46,6 @@ document.getElementById('calculator').addEventListener('click',function(event){
 
 let count = 4;
 document.getElementById('submit-btn').addEventListener('click',function(){
-    count--;
     const randonNumberField = document.getElementById('randon-number-field');
     const pin = randonNumberField.value;
 
@@ -55,13 +54,14 @@ document.getElementById('submit-btn').addEventListener('click',function(){
 
     const right = document.getElementById('right');
     const wrong = document.getElementById('wrong');
-    if(count < 0){
-        return;
-    }
-    else if((pin.length === 0) || (previousTypeNumber.length === 0)){
+    if((pin.length === 0) || (previousTypeNumber.length === 0)){
         return;
     }
     else if(previousTypeNumber.length === 4){
+        count--;
+        if(count < 0){
+            return;
+        }
         if(pin === previousTypeNumber){
             right.style.display = 'block';
             wrong.style.display = 'none';
