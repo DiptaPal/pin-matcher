@@ -54,30 +54,33 @@ document.getElementById('submit-btn').addEventListener('click',function(){
 
     const right = document.getElementById('right');
     const wrong = document.getElementById('wrong');
-    if((pin.length === 0) || (previousTypeNumber.length === 0)){
+    if(count === 0){
         return;
-    }
-    else if(previousTypeNumber.length === 4){
-        count--;
-        if(count < 0){
-            return;
-        }
-        if(pin === previousTypeNumber){
-            right.style.display = 'block';
-            wrong.style.display = 'none';
-        }
-        else{
-            const changes = document.getElementById('chances');
-            changes.innerText = count;
-            const warning = document.getElementById('warning');
-            warning.style.display = 'block'
-            typeNumberField.value = '';
-            right.style.display = 'none';
-            wrong.style.display = 'block';
-        }
     }
     else{
-        return;
+        if((pin.length === 0) || (previousTypeNumber.length === 0)){
+            return;
+        }
+        else if(previousTypeNumber.length === 4){
+            count--;
+            if(pin === previousTypeNumber){
+                right.style.display = 'block';
+                wrong.style.display = 'none';
+            }
+            else{
+                const changes = document.getElementById('chances');
+                changes.innerText = count;
+                const warning = document.getElementById('warning');
+                warning.style.display = 'block'
+                typeNumberField.value = '';
+                right.style.display = 'none';
+                wrong.style.display = 'block';
+            }
+        }
+        else{
+            count--;
+            return;
+        }
     }
 
 });
